@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class Main {
+
+public static void main(String[] args) {
+
+    Scanner entrada = new Scanner(System.in);
+
+    while (true) {
+
+        System.out.print("Digite a temperatura em Celsius (°C): ");
+
+        // Validação — impede letras ou valores inválidos
+        while (!entrada.hasNextDouble()) {
+            System.out.println("Valor inválido! Digite um número válido.");
+            entrada.next(); 
+        }
+
+        double celsius = entrada.nextDouble();
+
+        // Cálculos
+        double fahrenheit = (celsius * 9/5) + 32;
+        double kelvin = celsius + 273.15;
+
+        // Resultado formatado
+        System.out.println("\n--- Conversão de Temperatura ---");
+        System.out.printf("Temperatura em Celsius: %.2f °C\n", celsius);
+        System.out.printf("Temperatura em Fahrenheit: %.2f °F\n", fahrenheit);
+        System.out.printf("Temperatura em Kelvin: %.2f K\n\n", kelvin);
+
+        // Pergunta se deseja repetir
+        System.out.print("Deseja converter outra temperatura? (s/n): ");
+        String resposta = entrada.next();
+
+        if (resposta.equalsIgnoreCase("n")) {
+            System.out.println("Encerrando... Obrigado por usar o conversor!");
+            break;
+        }
+    }
+
+    entrada.close();
+}
+
+}
